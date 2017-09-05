@@ -1,0 +1,59 @@
+{
+   "homepage" : "https://github.com/blog/1107-reactivecocoa-is-now-open-source",
+   "source" : {
+      "git" : "https://github.com/ReactiveCocoa/ReactiveCocoa.git",
+      "tag" : "v2.5"
+   },
+   "requires_arc" : true,
+   "authors" : {
+      "Josh Abernathy" : "josh@github.com"
+   },
+   "name" : "ReactiveCocoa",
+   "license" : {
+      "type" : "MIT",
+      "file" : "LICENSE.md"
+   },
+   "description" : "ReactiveCocoa (RAC) is an Objective-C framework for Functional Reactive Programming. It provides APIs for composing and transforming streams of values.",
+   "version" : "2.5",
+   "platforms" : {
+      "osx" : "10.8",
+      "ios" : "6.0"
+   },
+   "summary" : "A framework for composing and transforming streams of values.",
+   "default_subspecs" : "UI",
+   "prepare_command" : "    find . \\( -regex '.*EXT.*\\.[mh]$' -o -regex '.*metamacros\\.[mh]$' \\) -execdir mv {} RAC{} \\;\n    find . -regex '.*\\.[hm]' -exec sed -i '' -E 's@\"(EXT.*|metamacros)\\.h\"@\"RAC\\1.h\"@' {} \\;\n    find . -regex '.*\\.[hm]' -exec sed -i '' -E 's@<ReactiveCocoa/(EXT.*)\\.h>@<ReactiveCocoa/RAC\\1.h>@' {} \\;\n",
+   "subspecs" : [
+      {
+         "source_files" : "ReactiveCocoa/RACObjCRuntime.{h,m}",
+         "name" : "no-arc",
+         "requires_arc" : false
+      },
+      {
+         "private_header_files" : [
+            "ReactiveCocoa/*Private.h"
+         ],
+         "name" : "Core",
+         "dependencies" : {
+            "ReactiveCocoa/no-arc" : []
+         },
+         "exclude_files" : "ReactiveCocoa/*{RACObjCRuntime,AppKit,NSControl,NSText,UIActionSheet,UI,MK}*",
+         "source_files" : [
+            "ReactiveCocoa/*.{d,h,m}",
+            "ReactiveCocoa/extobjc/*.{h,m}"
+         ]
+      },
+      {
+         "ios" : {
+            "exclude_files" : "ReactiveCocoa/*{AppKit,NSControl,NSText}*"
+         },
+         "osx" : {
+            "exclude_files" : "ReactiveCocoa/*{UI,MK}*"
+         },
+         "dependencies" : {
+            "ReactiveCocoa/Core" : []
+         },
+         "name" : "UI",
+         "source_files" : "ReactiveCocoa/*{AppKit,NSControl,NSText,UI,MK}*"
+      }
+   ]
+}
