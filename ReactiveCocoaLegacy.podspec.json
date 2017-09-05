@@ -8,7 +8,7 @@
    "authors" : {
       "Josh Abernathy" : "josh@github.com"
    },
-   "name" : "ReactiveCocoa",
+   "name" : "ReactiveCocoaLegacy",
    "license" : {
       "type" : "MIT",
       "file" : "LICENSE.md"
@@ -34,7 +34,7 @@
          ],
          "name" : "Core",
          "dependencies" : {
-            "ReactiveCocoa/no-arc" : []
+            "ReactiveCocoaLegacy/no-arc" : []
          },
          "exclude_files" : "ReactiveCocoa/*{RACObjCRuntime,AppKit,NSControl,NSText,UIActionSheet,UI,MK}*",
          "source_files" : [
@@ -50,7 +50,7 @@
             "exclude_files" : "ReactiveCocoa/*{UI,MK}*"
          },
          "dependencies" : {
-            "ReactiveCocoa/Core" : []
+            "ReactiveCocoaLegacy/Core" : []
          },
          "name" : "UI",
          "source_files" : "ReactiveCocoa/*{AppKit,NSControl,NSText,UI,MK}*"
