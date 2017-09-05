@@ -22,7 +22,7 @@ GCC_DYNAMIC_NO_PIC = NO
 
 // Default frameworks to the name of the project, instead of any
 // platform-specific target
-PRODUCT_NAME = $(PROJECT_NAME)
+PRODUCT_NAME = ReactiveCocoaLegacy
 
 // Enables the framework to be included from any location as long as the
 // loader’s runpath search paths includes it. For example from an application
